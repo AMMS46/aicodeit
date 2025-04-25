@@ -9,7 +9,8 @@ import os
 # Load environment variables
 load_dotenv()
 # Replace with your actual API key
-GOOGLE_API_KEY=os.getenv("GEMINI_API_KEY")
+
+os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
 
 code_iteration_template = """
 You are a coding assistant that helps game developers improve their code.
@@ -62,7 +63,7 @@ def main():
     st.title("AI Code Iterator for Game Developers")
 
     # Initialize the LLM
-    llm = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.2, google_api_key=GOOGLE_API_KEY)
+    llm = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.2, google_api_key=os.getenv("GOOGLE_API_KEY"))
     chain = code_iteration_prompt | llm
 
     # Input areas for prompt and code snippet
