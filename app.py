@@ -3,9 +3,13 @@ import textwrap
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 import streamlit as st
+from dotenv import load_dotenv
+import os
 
+# Load environment variables
+load_dotenv()
 # Replace with your actual API key
-GOOGLE_API_KEY = "AIzaSyBD8CjW2b7pCucLPgXb5SWI4StrtieXLbk"
+GOOGLE_API_KEY=os.getenv("GEMINI_API_KEY")
 
 code_iteration_template = """
 You are a coding assistant that helps game developers improve their code.
